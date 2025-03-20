@@ -1,0 +1,163 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px; /* Increased font size */
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Changed background color */
+  color: #333;
+}
+
+header {
+  position: relative;
+  text-align: center;
+  padding: 2.5rem 0; /* Increased padding */
+  background-color: #2a9d8f; /* Changed background color */
+  color: #ffffff;
+}
+
+.profile-photo {
+  width: 150px; /* Adjust width as needed */
+  height: 150px; /* Adjust height as needed */
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+header h1 {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 20px;
+  font-size: 3.5rem; /* Increased font size */
+}
+
+header p {
+  font-size: 1.8rem; /* Increased font size */
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #e76f51; /* Changed background color */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.75rem; /* Increased padding */
+}
+
+nav a {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  padding: 1.25rem; /* Increased padding */
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #f9c74f; /* Changed hover background color */
+  color: #ffffff;
+}
+
+nav a.active {
+  background-color: #2a9d8f; /* Changed active background color */
+  color: #ffffff;
+}
+
+nav .menu-icon {
+  display: none;
+  color: #ffffff;
+  font-size: 2.5rem; /* Increased font size */
+  cursor: pointer;
+}
+
+.section {
+  padding: 2.5rem 0; /* Increased padding */
+  border-bottom: 1px solid #ddd; /* Changed border color */
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem; /* Increased font size */
+  margin-bottom: 1.5rem; /* Increased margin */
+}
+
+.skills-list,
+.contact-details,
+.hobbies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Increased gap */
+}
+
+.skills-list li,
+.contact-details div,
+.hobbies-list div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Increased gap */
+}
+
+.contact-form {
+  margin-top: 1.5rem; /* Increased margin */
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem; /* Increased padding */
+  margin: 0.75rem 0; /* Increased margin */
+  border: none;
+  border-radius: 4px;
+}
+
+.contact-form button {
+  padding: 0.75rem 1.25rem; /* Increased padding */
+  background-color: #e76f51; /* Changed background color */
+  border: none;
+  border-radius: 4px;
+  color: #ffffff; /* Changed text color */
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #f9c74f; /* Changed hover background color */
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 0; /* Increased padding */
+  background-color: #2a9d8f; /* Changed background color */
+  color: #ffffff;
+}
+
+footer .social-icons a {
+  margin: 0 1rem; /* Increased margin */
+  color: #ffffff;
+  text-decoration: none;
+}
+
+footer .social-icons a:hover {
+  color: #e76f51; /* Changed hover color */
+}
+
+@media (max-width: 768px) {
+  nav .menu-icon {
+    display: block;
+  }
+  nav .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+  nav .menu a {
+    text-align: center;
+    padding: 1.5rem 0; /* Increased padding */
+    border-bottom: 1px solid #333;
+  }
+  nav .menu a:last-child {
+    border-bottom: none;
+  }
+}
