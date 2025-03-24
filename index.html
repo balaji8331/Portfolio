@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/logo_1.png" type="image/png">
+    <title>Arigala Balaji</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="profile-photo">
+        <img src = "./assets/Balaji_photo.jpeg" alt="Profile Photo" />
+      </div>
+      <h1>ARIGALA BALAJI</h1>
+      <p>B.Tech Final Year Student | Aspiring Software Engineer</p>
+    </header>
+    <nav>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a href="#hobbies">Hobbies</a>
+      </div>
+    </nav>
+    <div class="container">
+      <section id="home" class="section">
+        <h2>Home</h2>
+        <p>
+          Welcome to my personal webpage! Here you will find information about
+          my academic and professional journey, skills, projects, and hobbies. I
+          am passionate about technology and always eager to learn and explore
+          new areas. Feel free to reach out to me for any collaboration or just
+          to connect!
+        </p>
+      </section>
+      <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>
+          Motivated college student with a strong passion for the IT sector,
+          dedicated to leveraging technology to solve complex problems and drive
+          innovation. I am enthusiastic about collaborating with like-minded
+          professionals to create impactful solutions. Eager to broaden my skill
+          set, I actively seek opportunities to deepen my knowledge in software
+          engineering, cybersecurity, and emerging technologies.
+        </p>
+        <p>
+          Throughout my academic journey, I have actively participated in
+          various hackathons and internships, which have significantly enhanced
+          my practical knowledge and problem-solving skills. My interest lies in
+          exploring cutting-edge technologies and applying them to real-world
+          scenarios. I am committed to continuous learning and strive to stay
+          updated with the latest trends in the tech industry.
+        </p>
+      </section>
+      <section id="skills" class="section">
+        <h2>Skills</h2>
+        <h3>Programming Languages</h3>
+        <ul class="skills-list">
+          <li><img src="./assets/python.svg" alt="Python" /> Python</li>
+          <li><img src="./assets/filetype-sql.svg" alt="SQL" /> SQL</li>
+          <li><img src="./assets/CSS.svg" alt="CSS" /> CSS</li>
+          <li><img src="./assets/filetype-html.svg" alt="CSS" /> HTML</li>
+
+        </ul>
+        <h3>Frame Work</h3>
+        <ul class="skills-list">
+          <li><img src="./assets/flask.svg" alt="Flask" /> Flask</li>
+          <li><img src="./assets/Django.svg" alt="Django" /> Django</li>
+        </ul> 
+        <h3>Operating Systems</h3>
+        <ul class="skills-list">
+          <li><img src="assets/windows.svg" alt="Windows" /> Windows</li>
+          <li><img src="assets/ubuntu.svg" alt="Linux" /> Linux</li>
+        </ul>
+        <h3>Other Technical Skills</h3>
+        <ul class="skills-list">
+          <!-- <li><img src="ml-icon.svg" alt="Machine Learning" /> Machine Learning</li> -->
+          <li><img src="assets/github.svg" alt="Git" /> Git</li>
+          <li>
+            <img src="assets/shield-lock.svg" alt="Cybersecurity" /> CyberSecurity
+          </li>
+          <li><img src="assets/bootstrap.svg" alt="bootstrap" /> Bootstrap</li>
+        </ul>
+      </section>
+      <section id="projects" class="section">
+        <h2>Projects</h2>
+        <ul>
+          <li>
+            <strong
+              >AI Powered Medical Diagnosis: Revolutionizing 
+              health care through Automated Image Analysis </strong
+            >
+            <p>
+              The integration of artificial intelligence (AI) in 
+              medical diagnosis is transforming the healthcare landscape, 
+              particularly through automated image analysis. This paper 
+              presents a web-based application that allows users to submit 
+              medical images, which are then pre-processed to be compatible 
+              with machine learning models. The application utilizes 
+              advanced algorithms to analyze the images and provide 
+              predictions regarding potential illnesses. By streamlining the 
+              diagnostic process, the app not only enhances the accuracy of 
+              medical assessments but also expedites the delivery of care to 
+              patients. The application is designed to be user-friendly, 
+              catering to both healthcare professionals and individuals 
+              seeking to evaluate their symptoms. Upon submission of an 
+              image, the app processes the data and communicates with a 
+              machine learning model to generate a forecast of the most likely 
+              illness. This forecast is then displayed to the user, along with 
+              actionable guidance on preventive measures or treatment 
+              options. The ability to classify medical images efficiently is 
+              crucial, as it can significantly impact patient outcomes and 
+              healthcare efficiency. The paper emphasizes the potential of 
+              machine learning models to assist healthcare practitioners in 
+              making quicker and more accurate diagnoses, ultimately 
+              revolutionizing the way healthcare is delivered. In summary, 
+              this research highlights the importance of automated image 
+              analysis in medical diagnostics and its potential to improve 
+              healthcare services through enhanced accuracy and efficiency.
+            </p>
+          
+            
+          </li>
+          <br />
+          <li>
+            <strong>Cybersecurity Web App: Implementing AES, DES, Hill Cipher and Caesar Cipher Techniques</strong>
+            <p>
+              Data protection has never been as important in the modern digital world. 
+              The Flask framework and various cryptographic algorithms like the Caesar,
+              Hill, DES, and AES (Advanced Encryption Standard) ciphers are implemented 
+              in this web-based encryption and decryption application in this project. 
+              Through the friendly UI of the application, plaintext can be transformed 
+              into secure ciphertext and decoded again into readable text by users.
+              Each encryption method provides differing levels of security and complexity,
+              enabling individuals to understand and utilize simple and complex cryptographic algorithms.
+              This project demonstrates the practical application of secure data transfer and encryption
+              by bringing together mathematical operations and Python-based cryptography modules. 
+              Its effective use is an important milestone towards understanding cybersecurity fundamentals
+              and designing secure online applications. Future releases may involve incorporating additional
+              encryption techniques and enhancing the user experience and security of the app.
+            </p>
+            <a
+              href="https://github.com/balaji8331/encrypt_decrypt"
+              target="_blank"
+              >View on GitHub</a
+            >
+          </li>
+        </ul>
+      </section>
+      <section id="education" class="section">
+        <h2>Education</h2>
+        <p>
+          <strong>B.Tech in Computer Science and Engineering,</strong
+          >Kalasalingam Academy Of Research And Education,
+          <strong>CGPA - 7.0</strong>
+        </p>
+        <p>
+          <strong>10+2 (MPC),</strong>Narayana Junior College, BIEAP
+          AndhraPradesh <strong>Percentage - 91.6%</strong>
+        </p>
+        <p>
+          <strong>HighSchool (SSC),</strong>Keshava Reddy HighSchool, BSEAP
+          AndhraPradesh <strong>CGPA - 9.5</strong>
+        </p>
+      </section>
+      <section id="contact" class="section">
+        <h2>Contact Information</h2>
+        <div class="contact-details">
+          <div>
+            <a href="mailto:arigalabalaji8331@gmail.com"
+              ><img src="assets/email-icon.svg" alt="Email" />
+              arigalabalaji8331@gmail.com</a
+            >
+          </div>
+          
+          <div>
+            <a
+              href="https://www.linkedin.com/in/arigala-balaji-45b2a8279/"
+              target="_blank"
+              ><img src="assets/linkedin.svg" alt="LinkedIn" /> LinkedIn</a
+            >
+          </div>
+        </div>
+      </section>
+      <section id="hobbies" class="section">
+        <h2>Hobbies</h2>
+        <ol>
+          <li>Cricket</li>
+          <li>Listening to good music</li>
+          <li>Playing Games</li>
+          <li>Editing</li>
+        </ol>
+      </section>
+    </div>
+    <footer>
+      <div class="social-icons">
+        <a href="https://github.com/balaji8331" target="_blank"
+          ><img src="assets/github.svg" alt="GitHub"
+        /></a>
+        <a
+          href="https://www.linkedin.com/in/arigala-balaji-45b2a8279/"
+          target="_blank"
+          ><img src="assets/github.svg" alt="LinkedIn"
+        /></a>
+        <a href="https://www.instagram.com/itsme_manoj15/" target="_blank"
+          ><img src="assets/instagram.svg" alt="Instagram"
+        /></a>
+        <a href="https://x.com/Balaji1530" target="_blank"
+          ><img src="assets/twitter-x.svg" alt="Twitter"
+        /></a>
+      </div>
+      <p>&copy; 2025 ARIGALA BALAJI</p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
