@@ -128,7 +128,7 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-24 relative bg-black/20">
+    <section id="projects" className="pt-24 pb-12 relative bg-black/20">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -143,11 +143,27 @@ export const Projects = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-[#FF3A3A] via-[#FF6B00] to-[#00FFB2] mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto" style={{ perspective: "1000px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-10" style={{ perspective: "1000px" }}>
           {content.projects.map((project, idx) => (
             <ProjectCard key={project.title} project={project} index={idx} />
           ))}
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <a 
+            href="https://github.com/balaji8331" 
+            target="_blank" 
+            rel="noreferrer"
+            className="text-[#00FFB2] font-mono text-sm hover:text-white hover:drop-shadow-[0_0_8px_#00FFB2] transition-all inline-block"
+          >
+            More on GitHub &rarr;
+          </a>
+        </motion.div>
       </div>
     </section>
   );
