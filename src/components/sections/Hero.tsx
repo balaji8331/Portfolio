@@ -216,9 +216,9 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 2.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6"
+          className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4"
         >
-          <a href="#projects" className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all transform hover:scale-105"
+          <a href="#projects" className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all transform hover:scale-105 w-full sm:w-auto"
             style={{
               background: 'linear-gradient(135deg, #FF3A3A, #FF6B00)',
               color: 'white',
@@ -230,7 +230,7 @@ export const Hero = () => {
             View Projects
           </a>
           
-          <a href="#contact" className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all font-mono"
+          <a href="#contact" className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all font-mono w-full sm:w-auto"
             style={{
               background: 'transparent',
               border: '1px solid rgba(0,255,178,0.5)',
@@ -246,6 +246,25 @@ export const Hero = () => {
             }}
           >
             &gt; Contact Me
+          </a>
+
+          <a href="https://balaji8331.github.io/Portfolio/assets/Arigala_Balaji_Resume.pdf" target="_blank" rel="noreferrer" className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all font-mono flex items-center justify-center gap-2 w-full sm:w-auto"
+            style={{
+              background: 'rgba(0,180,255,0.1)',
+              border: '1px solid rgba(0,180,255,0.5)',
+              color: '#00B4FF'
+            }}
+            onMouseEnter={(e) => { 
+              e.currentTarget.style.background = 'rgba(0,180,255,0.2)'; 
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(0,180,255,0.4)';
+            }}
+            onMouseLeave={(e) => { 
+              e.currentTarget.style.background = 'rgba(0,180,255,0.1)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Resume.pdf
           </a>
         </motion.div>
 
