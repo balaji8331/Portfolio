@@ -6,6 +6,89 @@ import { tsParticles } from '@tsparticles/engine';
 import { FaGithub as Github, FaLinkedin as Linkedin, FaEnvelope as Mail } from 'react-icons/fa';
 import { content } from '../../data/content';
 
+const terminalLines = [
+  { color: '#00FFB2', text: '$ nmap -sV 192.168.1.0/24' },
+  { color: '#8892A4', text: 'Scanning 256 hosts...' },
+  { color: '#00B4FF', text: '[OPEN] 22/tcp  ssh OpenSSH' },
+  { color: '#00B4FF', text: '[OPEN] 443/tcp https nginx' },
+  { color: '#00FFB2', text: '$ gobuster dir -u target.local' },
+  { color: '#FF6B00', text: '[FOUND] /admin' },
+  { color: '#FF6B00', text: '[FOUND] /backup  ' },
+  { color: '#00FFB2', text: '$ sqlmap --dbs --level=3' },
+  { color: '#FF3A3A', text: '[VULN] SQL Injection detected!' },
+  { color: '#00FFB2', text: '$ msfconsole -q' },
+  { color: '#FF3A3A', text: '[ACCESS] Shell established ✓' },
+  { color: '#00FFB2', text: '$ whoami' },
+  { color: '#FF6B00', text: 'arigala_balaji' },
+  { color: '#8892A4', text: '---------------------' },
+];
+
+const AnimatedTerminal = () => {
+  const [lines, setLines] = useState<{id: number, lineIdx: number}[]>([]);
+  const countRef = React.useRef(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLines(prev => {
+        const nextLineIdx = countRef.current % terminalLines.length;
+        const newLines = [...prev, { id: countRef.current, lineIdx: nextLineIdx }];
+        countRef.current += 1;
+        if (newLines.length > 8) {
+          return newLines.slice(newLines.length - 8);
+        }
+        return newLines;
+      });
+    }, 1500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div 
+      className="hidden lg:block absolute z-10"
+      style={{
+        top: '80px',
+        left: '24px',
+        width: '280px',
+        background: 'rgba(8, 11, 16, 0.85)',
+        backdropFilter: 'blur(12px)',
+        border: '1px solid rgba(255, 58, 58, 0.25)',
+        borderRadius: '8px',
+        padding: '12px 14px',
+        fontFamily: "'JetBrains Mono', monospace",
+        fontSize: '10px',
+        lineHeight: '1.8',
+        boxShadow: '0 0 20px rgba(255,58,58,0.1)',
+        animation: 'flicker 3s infinite'
+      }}
+    >
+      <div className="flex items-center gap-2 mb-3 pb-2 border-b border-[#FF3A3A]/20">
+        <div className="flex gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FF3A3A]"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FF6B00]"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#00FFB2]"></div>
+        </div>
+        <div className="text-[#8892A4] text-[9px] mx-auto opacity-70 tracking-widest font-mono font-bold">
+          terminal &mdash; red_team_ops
+        </div>
+      </div>
+      <div className="flex flex-col justify-end min-h-[144px] overflow-hidden">
+        {lines.map((item) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ color: terminalLines[item.lineIdx].color }}
+            className="whitespace-pre font-mono font-bold"
+          >
+            {terminalLines[item.lineIdx].text}
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export const Hero = () => {
   const [init, setInit] = useState(false);
   const [whoamiText, setWhoamiText] = useState('');
@@ -46,6 +129,7 @@ export const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <AnimatedTerminal />
       {init && (
         <Particles
           id="tsparticles"

@@ -2,7 +2,7 @@ export const content = {
   hero: {
     name: "ARIGALA BALAJI",
     title: "Associate System Administrator | Cybersecurity Enthusiast",
-    subtitle: "Building secure, scalable cloud infrastructure — one automation at a time.",
+    subtitle: "Defending infrastructure by day. Breaking it to secure it by night.",
   },
   about: {
     bio: "B.Tech CSE (Cyber Security) graduate from Kalasalingam University (2025). Currently working as Associate System Administrator at GISUL Software Solutions / DGM Technologies, Bengaluru. Passionate about cloud infrastructure, security automation, and ethical hacking. Active on TryHackMe and PortSwigger Web Security Academy.",
