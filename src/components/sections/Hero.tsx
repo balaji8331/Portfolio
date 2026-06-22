@@ -255,21 +255,21 @@ export const Hero = () => {
             rel="noreferrer" 
             className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all font-mono flex items-center justify-center gap-2 w-full sm:w-auto"
             style={{
-              background: 'rgba(0,180,255,0.1)',
+              background: 'transparent',
               border: '1px solid rgba(0,180,255,0.5)',
               color: '#00B4FF'
             }}
             onMouseEnter={(e) => { 
-              e.currentTarget.style.background = 'rgba(0,180,255,0.2)'; 
-              e.currentTarget.style.boxShadow = '0 0 20px rgba(0,180,255,0.4)';
+              e.currentTarget.style.background = 'rgba(0,180,255,0.1)'; 
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(0,180,255,0.3)';
             }}
             onMouseLeave={(e) => { 
-              e.currentTarget.style.background = 'rgba(0,180,255,0.1)';
+              e.currentTarget.style.background = 'transparent';
               e.currentTarget.style.boxShadow = 'none';
             }}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-            Resume.pdf
+            Download Resume
           </a>
         </motion.div>
 
