@@ -81,7 +81,7 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
           <p className="text-[#8892A4] text-sm leading-relaxed mb-6 flex-grow">{project.description}</p>
           
           <div className="flex flex-wrap gap-2 mb-8">
-            {project.techStack.map((tech: string) => (
+            {project.tags.map((tech: string) => (
               <span 
                 key={tech} 
                 className="px-2 py-1 rounded-sm text-[0.7rem] font-mono font-bold"
@@ -96,27 +96,29 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
             ))}
           </div>
           
-          <a 
-            href={project.githubLink} 
-            target="_blank" 
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-mono font-bold w-fit transition-all duration-300"
-            style={{
-              color: '#00FFB2',
-              border: '1px solid rgba(0,255,178,0.4)',
-              background: 'transparent'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(0,255,178,0.1)';
-              e.currentTarget.style.boxShadow = '0 0 15px rgba(0,255,178,0.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
-          >
-            <Github size={16} /> View on GitHub
-          </a>
+          {project.github && (
+            <a 
+              href={project.github} 
+              target="_blank" 
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-mono font-bold w-fit transition-all duration-300"
+              style={{
+                color: '#00FFB2',
+                border: '1px solid rgba(0,255,178,0.4)',
+                background: 'transparent'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(0,255,178,0.1)';
+                e.currentTarget.style.boxShadow = '0 0 15px rgba(0,255,178,0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <Github size={16} /> View on GitHub
+            </a>
+          )}
         </div>
       </div>
     </motion.div>
