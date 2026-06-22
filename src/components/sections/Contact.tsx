@@ -35,7 +35,9 @@ export const Contact = () => {
     setStatus('sending');
     
     try {
-      emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY");
+      emailjs.init({
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY",
+      });
 
       // Email 1: Notify Balaji
       await emailjs.send(
@@ -48,7 +50,9 @@ export const Contact = () => {
           to_email: "arigalabalaji8331@gmail.com",
           reply_to: formData.email,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY"
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY",
+        }
       );
       
       // Email 2: Thank you to visitor
@@ -61,7 +65,9 @@ export const Contact = () => {
           to_email: formData.email,
           reply_to: "arigalabalaji8331@gmail.com",
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY"
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY",
+        }
       );
       
       setStatus('success');
