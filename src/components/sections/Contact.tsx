@@ -45,10 +45,10 @@ export const Contact = () => {
           <div 
             className="p-8 md:p-12 rounded-xl"
             style={{
-              background: 'rgba(13, 17, 30, 0.9)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 58, 58, 0.3)',
-              boxShadow: '0 0 40px rgba(255,58,58,0.08), inset 0 1px 0 rgba(255,58,58,0.1)'
+              background: 'rgba(13, 17, 30, 0.85)',
+              backdropFilter: 'blur(24px)',
+              border: '1px solid rgba(255, 58, 58, 0.2)',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 40px rgba(0,0,0,0.4)'
             }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

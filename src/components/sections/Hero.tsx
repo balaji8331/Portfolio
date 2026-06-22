@@ -60,10 +60,10 @@ export const Hero = () => {
               modes: { repulse: { distance: 100, duration: 0.4 } },
             },
             particles: {
-              color: { value: ["#00FFB2", "#FF3A3A", "#00B4FF"] },
-              links: { color: "#00FFB2", distance: 120, enable: true, opacity: 0.08, width: 1 },
+              color: { value: ["#00FFB2", "#FF3A3A"] },
+              links: { color: "rgba(0,255,178,0.06)", distance: 120, enable: true, opacity: 1, width: 1 },
               move: { enable: true, speed: 0.8 },
-              number: { density: { enable: true }, value: 60 },
+              number: { density: { enable: true }, value: 55 },
               opacity: { value: 0.5, animation: { enable: true, speed: 1, minimumValue: 0.2 } },
               shape: { type: "circle" },
               size: { value: { min: 1, max: 2.5 } },

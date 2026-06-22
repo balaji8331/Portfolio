@@ -38,9 +38,10 @@ export const Education = () => {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.1 }}
                 className="p-6 rounded-xl transition-all duration-300 flex gap-4 relative"
                 style={{
-                  background: 'rgba(13, 17, 30, 0.9)',
-                  backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(0, 180, 255, 0.2)',
+                  background: 'rgba(13, 17, 30, 0.85)',
+                  backdropFilter: 'blur(24px)',
+                  border: '1px solid rgba(255, 58, 58, 0.2)',
+                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 40px rgba(0,0,0,0.4)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(0,180,255,0.5)';

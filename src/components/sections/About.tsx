@@ -56,7 +56,8 @@ export const About = () => {
               style={{
                 border: '1px solid rgba(255,58,58,0.2)',
                 background: 'rgba(13, 17, 30, 0.85)',
-                backdropFilter: 'blur(20px)'
+                backdropFilter: 'blur(24px)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 40px rgba(0,0,0,0.4)'
               }}
             >
               <p className="text-[#8892A4] text-lg leading-relaxed mb-8">

@@ -57,9 +57,10 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
       <div 
         className="w-full h-full rounded-xl overflow-hidden relative flex flex-col transition-colors duration-300 group"
         style={{
-          background: 'rgba(13, 17, 30, 0.9)',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 58, 58, 0.15)',
+          background: 'rgba(13, 17, 30, 0.85)',
+          backdropFilter: 'blur(24px)',
+          border: '1px solid rgba(255, 58, 58, 0.2)',
+          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 40px rgba(0,0,0,0.4)'
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.borderColor = 'rgba(255,58,58,0.6)';
