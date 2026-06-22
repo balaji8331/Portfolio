@@ -17,11 +17,53 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-[20px] border border-white/[0.08] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] transition-all duration-300;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 245, 255, 0.1);
+    transition: all 0.3s ease;
   }
   
   .glass-card:hover {
-    @apply border-white/[0.15] shadow-[0_8px_32px_rgba(0,245,255,0.1),inset_0_0_20px_rgba(0,245,255,0.05)];
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 245, 255, 0.2), inset 0 0 20px rgba(0, 245, 255, 0.05);
+  }
+
+  .animated-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #00f5ff, #7c3aed, transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite linear;
+    opacity: 0.5;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+
+  .marquee-container {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 1.5rem;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .marquee-content {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: 1.5rem;
+    animation: scroll 20s linear infinite;
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - 1.5rem)); }
   }
 
   .text-gradient {

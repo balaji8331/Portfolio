@@ -41,11 +41,17 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <div className="animated-divider" />
         <About />
+        <div className="animated-divider" />
         <Skills />
+        <div className="animated-divider" />
         <Experience />
+        <div className="animated-divider" />
         <Projects />
+        <div className="animated-divider" />
         <Education />
+        <div className="animated-divider" />
         <Contact />
       </main>
       <Footer />

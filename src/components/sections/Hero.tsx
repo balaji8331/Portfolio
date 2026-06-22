@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import Particles from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 import { tsParticles } from '@tsparticles/engine';
+import { FaGithub as Github, FaLinkedin as Linkedin, FaEnvelope as Mail } from 'react-icons/fa';
 import { content } from '../../data/content';
 import { Button } from '../ui/Button';
 
@@ -23,6 +24,7 @@ export const Hero = () => {
         const span = document.createElement('span');
         span.innerText = char === ' ' ? '\u00A0' : char;
         span.style.opacity = '0';
+        span.style.transform = 'translateY(20px)';
         span.style.display = 'inline-block';
         nameRef.current?.appendChild(span);
       });
@@ -101,6 +103,23 @@ export const Hero = () => {
         >
           <Button href="#projects" variant="primary">View Projects</Button>
           <Button href="#contact" variant="secondary">Contact Me</Button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
+          className="flex items-center justify-center gap-6 mt-8"
+        >
+          <a href={content.contact.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#00f5ff] transition-colors p-2 rounded-full hover:bg-white/[0.05]">
+            <Github className="w-6 h-6" />
+          </a>
+          <a href={content.contact.linkedin} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#00f5ff] transition-colors p-2 rounded-full hover:bg-white/[0.05]">
+            <Linkedin className="w-6 h-6" />
+          </a>
+          <a href={`mailto:${content.contact.email}`} className="text-gray-400 hover:text-[#00f5ff] transition-colors p-2 rounded-full hover:bg-white/[0.05]">
+            <Mail className="w-6 h-6" />
+          </a>
         </motion.div>
       </div>
       

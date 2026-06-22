@@ -31,11 +31,11 @@ export const About = () => {
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-br from-[#00f5ff] to-[#7c3aed]">
               <div className="absolute inset-0 rounded-full blur-xl bg-gradient-to-br from-[#00f5ff]/50 to-[#7c3aed]/50 -z-10 animate-pulse" />
               <div className="w-full h-full rounded-full bg-[#0a0a0f] border-4 border-[#0a0a0f] overflow-hidden relative">
-                {/* Placeholder Avatar - User can replace with actual image */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#7c3aed]/20 to-transparent flex items-end justify-center pb-4">
-                  <div className="w-24 h-24 rounded-full bg-white/10 mb-4" />
-                </div>
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full bg-white/20" />
+                <img 
+                  src="https://balaji8331.github.io/Portfolio/assets/Balaji_photo.jpeg" 
+                  alt="Arigala Balaji"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </motion.div>
@@ -69,6 +69,37 @@ export const About = () => {
                     <div className="text-xs text-gray-400 uppercase tracking-wider">{stat.label}</div>
                   </motion.div>
                 ))}
+              </div>
+
+              <div className="mt-10 space-y-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4 font-medium">Currently Learning</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="px-4 py-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/5 backdrop-blur-sm text-[#00f5ff] text-sm font-medium shadow-[0_0_10px_rgba(0,245,255,0.1)]">CEH Certification</span>
+                    <span className="px-4 py-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/5 backdrop-blur-sm text-[#00f5ff] text-sm font-medium shadow-[0_0_10px_rgba(0,245,255,0.1)]">OSCP</span>
+                    <span className="px-4 py-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/5 backdrop-blur-sm text-[#00f5ff] text-sm font-medium shadow-[0_0_10px_rgba(0,245,255,0.1)]">TryHackMe (Top 1%)</span>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                >
+                  <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4 font-medium">Interests</h3>
+                  <div className="flex flex-wrap gap-4">
+                    <span className="flex items-center gap-2 text-gray-200 bg-white/[0.03] border border-white/10 hover:border-[#7c3aed]/50 transition-colors px-4 py-2.5 rounded-xl text-sm">☁️ Cloud Security</span>
+                    <span className="flex items-center gap-2 text-gray-200 bg-white/[0.03] border border-white/10 hover:border-[#7c3aed]/50 transition-colors px-4 py-2.5 rounded-xl text-sm">🔐 Ethical Hacking</span>
+                    <span className="flex items-center gap-2 text-gray-200 bg-white/[0.03] border border-white/10 hover:border-[#7c3aed]/50 transition-colors px-4 py-2.5 rounded-xl text-sm">🤖 Automation</span>
+                    <span className="flex items-center gap-2 text-gray-200 bg-white/[0.03] border border-white/10 hover:border-[#7c3aed]/50 transition-colors px-4 py-2.5 rounded-xl text-sm">🛡️ SOC Analysis</span>
+                  </div>
+                </motion.div>
               </div>
             </GlassCard>
           </motion.div>

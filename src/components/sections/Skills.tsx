@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { content } from '../../data/content';
 import { GlassCard } from '../ui/GlassCard';
+import { FaAws, FaGithub, FaServer } from 'react-icons/fa';
+import { SiGooglecloud, SiTryhackme } from 'react-icons/si';
+import { VscAzure } from 'react-icons/vsc';
 
 export const Skills = () => {
   return (
@@ -55,6 +58,69 @@ export const Skills = () => {
               </GlassCard>
             </motion.div>
           ))}
+        </div>
+
+        {/* Certifications & Platforms Marquee */}
+        <div className="mt-20">
+          <h3 className="text-xl font-semibold mb-8 text-center text-gray-300 uppercase tracking-widest">
+            Certifications & Platforms
+          </h3>
+          <div className="marquee-container py-4">
+            <div className="marquee-content">
+              {/* Items */}
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <VscAzure className="w-6 h-6 text-[#008ad7]" />
+                <span className="font-medium text-white">Azure</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <FaAws className="w-6 h-6 text-[#ff9900]" />
+                <span className="font-medium text-white">AWS</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <SiGooglecloud className="w-6 h-6 text-[#4285f4]" />
+                <span className="font-medium text-white">GCP</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <FaServer className="w-6 h-6 text-[#f80000]" />
+                <span className="font-medium text-white">OCI</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <SiTryhackme className="w-6 h-6 text-[#ffffff]" />
+                <span className="font-medium text-white">TryHackMe</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <FaGithub className="w-6 h-6 text-white" />
+                <span className="font-medium text-white">GitHub</span>
+              </GlassCard>
+            </div>
+            {/* Duplicate for infinite scroll */}
+            <div className="marquee-content" aria-hidden="true">
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <VscAzure className="w-6 h-6 text-[#008ad7]" />
+                <span className="font-medium text-white">Azure</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <FaAws className="w-6 h-6 text-[#ff9900]" />
+                <span className="font-medium text-white">AWS</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <SiGooglecloud className="w-6 h-6 text-[#4285f4]" />
+                <span className="font-medium text-white">GCP</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <FaServer className="w-6 h-6 text-[#f80000]" />
+                <span className="font-medium text-white">OCI</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <SiTryhackme className="w-6 h-6 text-[#ffffff]" />
+                <span className="font-medium text-white">TryHackMe</span>
+              </GlassCard>
+              <GlassCard className="flex items-center gap-3 px-6 py-3 min-w-max hover:-translate-y-1 transition-transform cursor-default">
+                <FaGithub className="w-6 h-6 text-white" />
+                <span className="font-medium text-white">GitHub</span>
+              </GlassCard>
+            </div>
+          </div>
         </div>
       </div>
     </section>

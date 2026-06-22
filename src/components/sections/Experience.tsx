@@ -22,13 +22,15 @@ export const Experience = () => {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#00f5ff] via-[#7c3aed] to-transparent -translate-x-1/2 opacity-30" />
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#00f5ff] via-[#7c3aed] to-transparent -translate-x-1/2 shadow-[0_0_10px_#00f5ff] opacity-50" />
 
           {content.experience.map((exp, idx) => (
-            <div key={idx} className={`relative flex flex-col md:flex-row items-center mb-12 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+            <div key={idx} className={`relative flex flex-col md:flex-row items-center mb-16 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
               
               {/* Timeline Dot */}
-              <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-[#00f5ff] border-4 border-[#0a0a0f] -translate-x-1/2 shadow-[0_0_15px_#00f5ff] z-10" />
+              <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-[#00f5ff] border-2 border-[#0a0a0f] -translate-x-1/2 shadow-[0_0_15px_#00f5ff] z-10 animate-[pulse_2s_ease-in-out_infinite]" />
+
+              <div className="hidden md:block md:w-1/2" />
 
               <motion.div 
                 initial={{ opacity: 0, x: idx % 2 === 0 ? 50 : -50 }}
@@ -42,7 +44,7 @@ export const Experience = () => {
                   <h3 className="text-2xl font-bold text-white mb-1">{exp.title}</h3>
                   <div className="text-gray-400 text-sm mb-4 font-medium">{exp.company} • {exp.location}</div>
                   
-                  <ul className="space-y-2 text-gray-300 text-sm text-left">
+                  <ul className="space-y-2 text-gray-300 text-sm text-left inline-block">
                     {exp.bullets.map((bullet, i) => (
                       <li key={i} className="flex items-start">
                         <span className="text-[#7c3aed] mt-1 mr-2">▹</span>

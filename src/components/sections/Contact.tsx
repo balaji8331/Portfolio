@@ -15,7 +15,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative bg-black/20">
+    <section id="contact" className="pt-12 pb-24 relative bg-black/20">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,6 +29,12 @@ export const Contact = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#00f5ff] to-[#7c3aed] mx-auto rounded-full" />
         </motion.div>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-10">
+          <span className="px-5 py-2 rounded-full border border-white/10 bg-white/[0.03] text-sm font-medium text-gray-300 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.02)]">📍 Bengaluru, India</span>
+          <span className="px-5 py-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/5 text-sm font-medium text-[#00f5ff] backdrop-blur-md shadow-[0_0_15px_rgba(0,245,255,0.1)]">💼 Open to Opportunities</span>
+          <span className="px-5 py-2 rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/5 text-sm font-medium text-[#7c3aed] backdrop-blur-md shadow-[0_0_15px_rgba(124,58,237,0.1)]">⚡ Responds within 24hrs</span>
+        </div>
 
         <div className="max-w-4xl mx-auto">
           <GlassCard className="neon-border p-8 md:p-12">
