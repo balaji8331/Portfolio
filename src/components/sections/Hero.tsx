@@ -248,7 +248,12 @@ export const Hero = () => {
             &gt; Contact Me
           </a>
 
-          <a href="https://balaji8331.github.io/Portfolio/assets/Arigala_Balaji_Resume.pdf" target="_blank" rel="noreferrer" className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all font-mono flex items-center justify-center gap-2 w-full sm:w-auto"
+          <a 
+            href={`${import.meta.env.BASE_URL}assets/Arigala_Balaji_Resume.pdf`} 
+            download="Arigala_Balaji_Resume.pdf"
+            target="_blank" 
+            rel="noreferrer" 
+            className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all font-mono flex items-center justify-center gap-2 w-full sm:w-auto"
             style={{
               background: 'rgba(0,180,255,0.1)',
               border: '1px solid rgba(0,180,255,0.5)',
