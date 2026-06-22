@@ -1,47 +1,51 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
 import Particles from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 import { tsParticles } from '@tsparticles/engine';
 import { FaGithub as Github, FaLinkedin as Linkedin, FaEnvelope as Mail } from 'react-icons/fa';
 import { content } from '../../data/content';
-import { Button } from '../ui/Button';
 
 export const Hero = () => {
-  const nameRef = useRef<HTMLHeadingElement>(null);
-  const [init, setInit] = React.useState(false);
+  const [init, setInit] = useState(false);
+  const [whoamiText, setWhoamiText] = useState('');
+  const fullWhoami = 'root@balaji:~$ whoami';
 
   useEffect(() => {
     loadSlim(tsParticles).then(() => {
       setInit(true);
     });
 
-    if (nameRef.current) {
-      const chars = nameRef.current.innerText.split('');
-      nameRef.current.innerText = '';
-      chars.forEach((char) => {
-        const span = document.createElement('span');
-        span.innerText = char === ' ' ? '\u00A0' : char;
-        span.style.opacity = '0';
-        span.style.transform = 'translateY(20px)';
-        span.style.display = 'inline-block';
-        nameRef.current?.appendChild(span);
-      });
+    let i = 0;
+    const typeWriter = setInterval(() => {
+      if (i < fullWhoami.length) {
+        setWhoamiText(fullWhoami.substring(0, i + 1));
+        i++;
+      } else {
+        clearInterval(typeWriter);
+      }
+    }, 50);
 
-      gsap.to(nameRef.current.children, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.05,
-        duration: 0.8,
-        ease: 'power4.out',
-        delay: 0.2
-      });
-    }
+    return () => clearInterval(typeWriter);
   }, []);
 
+  const nameChars = content.hero.name.split('');
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 1.5 }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
+  };
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden mesh-bg">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {init && (
         <Particles
           id="tsparticles"
@@ -56,41 +60,70 @@ export const Hero = () => {
               modes: { repulse: { distance: 100, duration: 0.4 } },
             },
             particles: {
-              color: { value: "#00f5ff" },
-              links: { color: "#7c3aed", distance: 150, enable: true, opacity: 0.2, width: 1 },
-              move: { enable: true, speed: 1 },
+              color: { value: ["#00FFB2", "#FF3A3A", "#00B4FF"] },
+              links: { color: "#00FFB2", distance: 120, enable: true, opacity: 0.08, width: 1 },
+              move: { enable: true, speed: 0.8 },
               number: { density: { enable: true }, value: 60 },
-              opacity: { value: 0.3 },
+              opacity: { value: 0.5, animation: { enable: true, speed: 1, minimumValue: 0.2 } },
               shape: { type: "circle" },
-              size: { value: { min: 1, max: 3 } },
+              size: { value: { min: 1, max: 2.5 } },
             },
             detectRetina: true,
           }}
         />
       )}
 
-      <div className="container mx-auto px-6 relative z-10 text-center">
+      <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-4 inline-block px-4 py-1.5 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/5 backdrop-blur-sm text-[#00f5ff] text-sm font-medium tracking-wide"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-6 flex items-center gap-2 px-4 py-1.5 rounded-sm border border-[#FF3A3A]/40 bg-[#FF3A3A]/10 text-[#FF3A3A] text-sm font-medium tracking-wide font-mono shadow-[0_0_15px_rgba(255,58,58,0.2)]"
         >
+          <span className="w-2 h-2 rounded-full bg-[#FF3A3A] animate-pulse" />
           {content.hero.title}
         </motion.div>
+
+        <div className="mb-2 h-6 flex items-center justify-center">
+          <span style={{ color: '#00FFB2', fontFamily: 'monospace', fontSize: '0.9rem' }}>
+            {whoamiText}
+            <span className="animate-[pulse_1s_step-end_infinite]">_</span>
+          </span>
+        </div>
         
-        <h1 
-          ref={nameRef}
-          className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight text-gradient"
+        <motion.h1 
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="font-black mb-6 tracking-tight text-center flex flex-wrap justify-center"
+          style={{ 
+            fontSize: 'clamp(3rem, 8vw, 7rem)', 
+            filter: 'drop-shadow(0 0 30px rgba(255,58,58,0.4))' 
+          }}
         >
-          {content.hero.name}
-        </h1>
+          {nameChars.map((char, index) => (
+            <motion.span 
+              key={index} 
+              variants={item}
+              style={{
+                display: 'inline-block',
+                background: 'linear-gradient(135deg, #FF3A3A 0%, #FF6B00 50%, #FFD700 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                paddingRight: char === ' ' ? '1rem' : '0'
+              }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </motion.h1>
         
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light"
+          transition={{ duration: 0.5, delay: 2.2 }}
+          className="text-lg md:text-xl text-[#8892A4] max-w-2xl mx-auto mb-10 font-mono"
         >
           {content.hero.subtitle}
         </motion.p>
@@ -98,39 +131,78 @@ export const Hero = () => {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.5, delay: 2.4 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <Button href="#projects" variant="primary">View Projects</Button>
-          <Button href="#contact" variant="secondary">Contact Me</Button>
+          <a href="#projects" className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all transform hover:scale-105"
+            style={{
+              background: 'linear-gradient(135deg, #FF3A3A, #FF6B00)',
+              color: 'white',
+              boxShadow: '0 0 20px rgba(255,58,58,0.4)',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 0 40px rgba(255,58,58,0.7)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 0 20px rgba(255,58,58,0.4)'; }}
+          >
+            View Projects
+          </a>
+          
+          <a href="#contact" className="px-8 py-3 rounded-sm font-medium tracking-wide transition-all font-mono"
+            style={{
+              background: 'transparent',
+              border: '1px solid rgba(0,255,178,0.5)',
+              color: '#00FFB2'
+            }}
+            onMouseEnter={(e) => { 
+              e.currentTarget.style.background = 'rgba(0,255,178,0.1)'; 
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(0,255,178,0.3)';
+            }}
+            onMouseLeave={(e) => { 
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            &gt; Contact Me
+          </a>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 2.6 }}
+          className="mt-12 flex flex-col gap-2 font-mono text-sm text-left border border-white/5 bg-white/[0.02] p-4 rounded-sm"
+        >
+          <div className="text-[#8892A4]"><span className="text-[#FF3A3A] mr-2 inline-block animate-pulse">●</span><span className="text-white font-bold mr-2">[LIVE]</span>Currently: Bengaluru, India</div>
+          <div className="text-[#8892A4]"><span className="text-[#00FFB2] mr-2 inline-block">▲</span><span className="text-white font-bold mr-2">[ACTIVE]</span>Open to Opportunities</div>
+          <div className="text-[#8892A4]"><span className="text-[#00B4FF] mr-2 inline-block">⚡</span><span className="text-white font-bold mr-2">[ONLINE]</span>Responds in 24hrs</div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-          className="flex items-center justify-center gap-6 mt-8"
+          transition={{ duration: 0.5, delay: 2.8 }}
+          className="flex items-center justify-center gap-6 mt-10"
         >
-          <a href={content.contact.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#00f5ff] transition-colors p-2 rounded-full hover:bg-white/[0.05]">
-            <Github className="w-6 h-6" />
+          <a href={content.contact.github} target="_blank" rel="noreferrer" className="text-[#8892A4] hover:text-white hover:drop-shadow-[0_0_10px_white] transition-all p-2">
+            <Github className="w-7 h-7" />
           </a>
-          <a href={content.contact.linkedin} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#00f5ff] transition-colors p-2 rounded-full hover:bg-white/[0.05]">
-            <Linkedin className="w-6 h-6" />
+          <a href={content.contact.linkedin} target="_blank" rel="noreferrer" className="text-[#8892A4] hover:text-[#00B4FF] hover:drop-shadow-[0_0_10px_#00B4FF] transition-all p-2">
+            <Linkedin className="w-7 h-7" />
           </a>
-          <a href={`mailto:${content.contact.email}`} className="text-gray-400 hover:text-[#00f5ff] transition-colors p-2 rounded-full hover:bg-white/[0.05]">
-            <Mail className="w-6 h-6" />
+          <a href={`mailto:${content.contact.email}`} className="text-[#8892A4] hover:text-[#FF3A3A] hover:drop-shadow-[0_0_10px_#FF3A3A] transition-all p-2">
+            <Mail className="w-7 h-7" />
           </a>
         </motion.div>
+
       </div>
       
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 3, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-gray-500 uppercase tracking-widest">Scroll</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-gray-500 to-transparent" />
+        <span className="text-[10px] text-[#8892A4] font-mono tracking-widest uppercase">Scroll to bypass</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-[#FF3A3A] to-transparent animate-pulse" />
       </motion.div>
     </section>
   );

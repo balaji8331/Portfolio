@@ -1,20 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { content } from '../../data/content';
 import { FaGithub as Github } from 'react-icons/fa';
-import { GlassCard } from '../ui/GlassCard';
 
-const ProjectCard = ({ project }: { project: any }) => {
+const ProjectCard = ({ project, index }: { project: any, index: number }) => {
   const ref = useRef<HTMLDivElement>(null);
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 20 });
-  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 20 });
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -34,55 +33,92 @@ const ProjectCard = ({ project }: { project: any }) => {
     y.set(0);
   };
 
+  const getTagColor = (title: string) => {
+    if (title.includes("AI")) return "#00B4FF"; // Blue
+    if (title.includes("Crypto")) return "#FF3A3A"; // Red
+    if (title.includes("Guacamole")) return "#FF6B00"; // Orange
+    return "#00FFB2"; // Green (Session Tracker)
+  };
+
+  const tagColor = getTagColor(project.title);
+
   return (
     <motion.div
       ref={ref}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
-      className="h-full relative"
+      className="relative w-full h-full rounded-xl transition-all duration-300"
     >
-      <GlassCard className="h-full flex flex-col relative overflow-hidden group">
-        {/* Glowing border sweep animation */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute -inset-[100%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#00f5ff_100%)] opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-        </div>
-        
-        <div className="absolute inset-[1px] bg-[#0a0a0f] rounded-2xl z-0" />
-        <div className="absolute inset-[1px] bg-white/[0.03] backdrop-blur-xl rounded-2xl z-0" />
-
+      <div 
+        className="w-full h-full rounded-xl overflow-hidden relative flex flex-col transition-colors duration-300 group"
+        style={{
+          background: 'rgba(13, 17, 30, 0.9)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 58, 58, 0.15)',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(255,58,58,0.6)';
+          e.currentTarget.style.boxShadow = '0 20px 40px rgba(255,58,58,0.15)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(255, 58, 58, 0.15)';
+          e.currentTarget.style.boxShadow = 'none';
+        }}
+      >
+        {/* Top Tag Bar */}
         <div 
-          className="relative z-10 flex flex-col h-full p-2"
-          style={{ transform: "translateZ(30px)" }}
-        >
-          <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#00f5ff] transition-colors">{project.title}</h3>
+          className="absolute top-0 left-0 w-full h-1"
+          style={{ background: tagColor, boxShadow: `0 0 10px ${tagColor}` }}
+        />
+        
+        <div className="p-8 flex-grow flex flex-col">
+          <h3 className="text-2xl font-bold text-[#E8EDF5] mb-3 mt-2">{project.title}</h3>
+          <p className="text-[#8892A4] text-sm leading-relaxed mb-6 flex-grow">{project.description}</p>
           
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.map((tag: string) => (
-              <span key={tag} className="text-xs font-medium px-2 py-1 rounded bg-[#7c3aed]/20 text-[#d8b4fe] border border-[#7c3aed]/30">
-                {tag}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {project.techStack.map((tech: string) => (
+              <span 
+                key={tech} 
+                className="px-2 py-1 rounded-sm text-[0.7rem] font-mono font-bold"
+                style={{
+                  background: 'rgba(255,58,58,0.08)',
+                  border: '1px solid rgba(255,58,58,0.25)',
+                  color: '#FF6B00'
+                }}
+              >
+                {tech}
               </span>
             ))}
           </div>
           
-          <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
-            {project.description}
-          </p>
-          
-          <div className="flex gap-4 mt-auto">
-            {project.github && (
-              <a href={project.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-300 hover:text-[#00f5ff] transition-colors cursor-pointer relative z-20">
-                <Github size={18} />
-                <span>Source Code</span>
-              </a>
-            )}
-          </div>
+          <a 
+            href={project.githubLink} 
+            target="_blank" 
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-mono font-bold w-fit transition-all duration-300"
+            style={{
+              color: '#00FFB2',
+              border: '1px solid rgba(0,255,178,0.4)',
+              background: 'transparent'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(0,255,178,0.1)';
+              e.currentTarget.style.boxShadow = '0 0 15px rgba(0,255,178,0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <Github size={16} /> View on GitHub
+          </a>
         </div>
-      </GlassCard>
+      </div>
     </motion.div>
   );
 };
@@ -92,30 +128,21 @@ export const Projects = () => {
     <section id="projects" className="py-24 relative bg-black/20">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Featured <span className="text-gradient">Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#00f5ff] to-[#7c3aed] mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-[#FF3A3A] via-[#FF6B00] to-[#00FFB2] mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 perspective-1000">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto" style={{ perspective: "1000px" }}>
           {content.projects.map((project, idx) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="h-full"
-            >
-              <ProjectCard project={project} />
-            </motion.div>
+            <ProjectCard key={project.title} project={project} index={idx} />
           ))}
         </div>
       </div>

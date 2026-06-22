@@ -39,10 +39,12 @@ export const Navbar = () => {
   return (
     <nav className={cn(
       "fixed top-0 w-full z-50 transition-all duration-300",
-      scrolled ? "py-4 bg-[#0a0a0f]/80 backdrop-blur-md border-b border-white/10 shadow-lg" : "py-6 bg-transparent"
+      scrolled ? "py-4 bg-[#080B10]/90 backdrop-blur-[24px] border-b border-[#FF3A3A]/20 shadow-[0_1px_0_rgba(255,58,58,0.1),0_4px_20px_rgba(0,0,0,0.5)]" : "py-6 bg-transparent"
     )}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-xl font-bold text-gradient tracking-wider z-50">AB.</a>
+        <a href="#" className="text-xl font-black text-[#FF3A3A] tracking-wider z-50 flex items-center">
+          AB.<span className="animate-[pulse_1s_step-end_infinite] font-mono">_</span>
+        </a>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-1 glass-card px-2 py-1 rounded-full bg-white/[0.01]">
@@ -50,12 +52,15 @@ export const Navbar = () => {
             <a
               key={item.name}
               href={item.href}
-              className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors"
+              className={cn(
+                "relative px-4 py-2 text-sm font-medium transition-colors font-mono",
+                active === item.href.substring(1) ? "text-[#FF3A3A]" : "text-[#8892A4] hover:text-[#FF3A3A]"
+              )}
             >
               {active === item.href.substring(1) && (
                 <motion.div
                   layoutId="active-nav"
-                  className="absolute inset-0 bg-white/10 rounded-full border border-white/10"
+                  className="absolute inset-0 bg-[#FF3A3A]/15 rounded-full border border-[#FF3A3A]/40 shadow-[0_0_12px_rgba(255,58,58,0.3)]"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -88,8 +93,8 @@ export const Navbar = () => {
               href={item.href}
               onClick={() => setIsOpen(false)}
               className={cn(
-                "text-2xl font-semibold tracking-wide transition-colors",
-                active === item.href.substring(1) ? "text-[#00f5ff]" : "text-gray-400 hover:text-white"
+                "text-2xl font-bold tracking-wide transition-colors font-mono",
+                active === item.href.substring(1) ? "text-[#FF3A3A]" : "text-[#8892A4] hover:text-[#FF3A3A]"
               )}
             >
               {item.name}
